@@ -4,10 +4,10 @@
 
 		// Combine global settings and user settings
 		var settings = $.extend({
-			duration: '3000',
-			hoverElement: 'self',
-			easing: 'ease-in-out',
-			complete: null
+			duration: '3000',					// Duration of animation in milliseconds
+			hoverElement: 'self',			// Element to hook the hover event to
+			easing: 'ease-in-out',		// Easing function to use
+			complete: null						// Placeholder for callback
 		}, options);
 
 		// Apply styles to animate and text indent the text
@@ -30,14 +30,17 @@
 			var scrollText = {
 				el: $(this),
 				elContainer: $(this).parent(),
+				// Get the width of the scrolling element
 				getElWidth: function() {
 					calcWidth = this.el.css('position','absolute').width();
 					this.el.css('position','static');
 					return calcWidth;
 				},
+				// Get the width of the direct parent of the scrolling element
 				getContainerWidth: function() {
 					return this.elContainer.width()
 				},
+				// Determine which element will receive the hover event
 				getHoverTarget: function() {
 					if(settings.hoverElement == 'parent') {
 						return this.elContainer;
@@ -45,9 +48,11 @@
 						return this.el;
 					}
 				},
+				// Calculate how far the text needs to indent
 				calculateTextIndent : function() {
 					return this.getElWidth() - this.getContainerWidth();
 				},
+				// Attach the hover event
 				attachHover: function() {
 					this.getHoverTarget().hover(function() {
 						applyActiveStyles(scrollText.el, scrollText.calculateTextIndent());
@@ -55,13 +60,13 @@
 							removeActiveStyles(scrollText.el);
 						});
 				},
+				// Roll Out!
 				init: function() {
 					if(this.getElWidth() > this.getContainerWidth()) {
 						this.attachHover();
 					}
 				}
 			}
-			window.scrollText = scrollText;
 			scrollText.init();
 		})
 

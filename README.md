@@ -5,7 +5,7 @@ What is it?
 -----------------
 A jQuery plugin that grabs a piece of single-line text, and on hover will scroll it so you can read it all. Pretty simple.
 
-Here is an example:
+Here is an example: https://dl.dropboxusercontent.com/u/24880508/TextAutoScroller/demo.html
 
 
 How to use it
@@ -30,4 +30,5 @@ Options
  > ```javascript
  > duration				// Integer in milliseconds - Dictates the speed at which the scrolling animation happens.
  > hoverElement		// 'self' or 'parent' - Determines which element the hover even gets attached to
+ > easing					// 'linear', 'ease-in-out', etc.  - Easing function
 
