@@ -6,14 +6,14 @@
 		var settings = $.extend({
 			duration: '3000',
 			hoverElement: 'self',
+			easing: 'ease-in-out',
 			complete: null
 		}, options);
 
 		// Apply styles to animate and text indent the text
 		var applyActiveStyles = function(elToChange, textIndent) {
 			elToChange.css({
-				'-webkit-transition-property': 'text-indent',
-				'-webkit-transition-duration': settings.duration + 'ms',
+				'transition': 'text-indent ' + settings.duration + 'ms ' + settings.easing,
 				'text-indent': - textIndent + 'px'
 			});
 		}
@@ -21,7 +21,7 @@
 		// Reset/remove previously added styles
 		var removeActiveStyles = function(elToChange) {
 			elToChange.css({
-				'-webkit-transition-duration': settings.duration/4  + 'ms',
+				'duration': settings.duration/4  + 'ms',
 				'text-indent': '0'
 			})
 		}

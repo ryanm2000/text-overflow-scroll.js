@@ -16,7 +16,13 @@ Include a reference to the plugin file, then simple call:
  >     $('.autoscroll').scrollingText({duration: 2500});
  > });
 
-NOTE: As this is a v0.1, it currently only works in webkit based browsers.
+
+Browser Support
+-----------------
+- Chrome 26+
+- Firefox 16+
+- Opera 12.1+
+- Internet Explorer 10+
 
 
 Options
