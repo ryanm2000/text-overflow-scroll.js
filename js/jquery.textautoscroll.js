@@ -4,6 +4,7 @@
 
 		var settings = $.extend({
 			duration: '3000',
+			hoverElement: 'self',
 			complete: null
 		}, options)
 
@@ -12,14 +13,23 @@
 				el: $(this),
 				elContainer: $(this).parent(),
 				getElWidth: function() {
-					return this.el.css('position','absolute').width()
+					calcWidth = this.el.css('position','absolute').width();
+					this.el.css('position','static');
+					return calcWidth;
 				},
 				getContainerWidth: function() {
 					return this.elContainer.width()
 				},
+				getHoverElement: function() {
+					if(settings.hoverElement == 'parent') {
+						return this.elContainer;
+					} else {
+						return this.el;
+					}
+				},
 				attachHover: function() {
 					var elToChange = this.el;
-					this.elContainer.hover(function() {
+					this.getHoverElement().hover(function() {
 						elToChange.css({
 								'-webkit-transition-property': 'text-indent',
 								'-webkit-transition-duration': settings.duration + 'ms',
@@ -39,6 +49,7 @@
 				}
 
 			}
+			window.scrollText = scrollText;
 			scrollText.init();
 		})
 	}
