@@ -2,11 +2,29 @@
 
 	$.fn.scrollingText = function(options) {
 
+		// Combine global settings and user settings
 		var settings = $.extend({
 			duration: '3000',
 			hoverElement: 'self',
 			complete: null
-		}, options)
+		}, options);
+
+		// Apply styles to animate and text indent the text
+		var applyActiveStyles = function(elToChange, textIndent) {
+			elToChange.css({
+				'-webkit-transition-property': 'text-indent',
+				'-webkit-transition-duration': settings.duration + 'ms',
+				'text-indent': - textIndent + 'px'
+			});
+		}
+
+		// Reset/remove previously added styles
+		var removeActiveStyles = function(elToChange) {
+			elToChange.css({
+				'-webkit-transition-duration': settings.duration/4  + 'ms',
+				'text-indent': '0'
+			})
+		}
 
 		return this.each(function() {
 			var scrollText = {
@@ -20,26 +38,21 @@
 				getContainerWidth: function() {
 					return this.elContainer.width()
 				},
-				getHoverElement: function() {
+				getHoverTarget: function() {
 					if(settings.hoverElement == 'parent') {
 						return this.elContainer;
 					} else {
 						return this.el;
 					}
 				},
+				calculateTextIndent : function() {
+					return this.getElWidth() - this.getContainerWidth();
+				},
 				attachHover: function() {
-					var elToChange = this.el;
-					this.getHoverElement().hover(function() {
-						elToChange.css({
-								'-webkit-transition-property': 'text-indent',
-								'-webkit-transition-duration': settings.duration + 'ms',
-								'text-indent': -(scrollText.getElWidth() - scrollText.getContainerWidth()) + 'px'
-							})
+					this.getHoverTarget().hover(function() {
+						applyActiveStyles(scrollText.el, scrollText.calculateTextIndent());
 						}, function() {
-							elToChange.css({
-								'-webkit-transition-duration': settings.duration/4  + 'ms',
-								'text-indent': '0'
-							})
+							removeActiveStyles(scrollText.el);
 						});
 				},
 				init: function() {
@@ -47,10 +60,10 @@
 						this.attachHover();
 					}
 				}
-
 			}
 			window.scrollText = scrollText;
 			scrollText.init();
 		})
+
 	}
 }(jQuery));
