@@ -13,7 +13,7 @@ How to use it
 Include a reference to the plugin file, then simple call:
  > ```javascript
  > $(function() {
- >     $('.autoscroll').scrollingText({duration: 2500});
+ >     $('.autoscroll').scrollingText();
  > });
 
 
@@ -28,7 +28,7 @@ Browser Support
 Options
 -----------------
  > ```javascript
- > duration				// Integer in milliseconds - Dictates the speed at which the scrolling animation happens.
+ > speed				// 'slow', 'medium', or 'fast' - Speed in which you want the animation to run
  > hoverElement		// 'self' or 'parent' - Determines which element the hover even gets attached to
  > easing					// 'linear', 'ease-in-out', etc.  - Easing function
 

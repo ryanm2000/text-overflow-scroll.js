@@ -4,7 +4,7 @@
 
 		// Combine global settings and user settings
 		var settings = $.extend({
-			speed: 'medium',					// Speed in which you want the animation to appear
+			speed: 'medium',					// Speed in which you want the animation to run
 			hoverElement: 'self',			// Element to hook the hover event to
 			easing: 'ease-out',				// Easing function to use
 			complete: null						// Placeholder for callback
