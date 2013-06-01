@@ -21,7 +21,7 @@
 		// Reset/remove previously added styles
 		var removeActiveStyles = function(elToChange) {
 			elToChange.css({
-				'duration': settings.duration/4  + 'ms',
+				'transition': settings.duration /2  + 'ms',
 				'text-indent': '0'
 			})
 		}
@@ -53,7 +53,7 @@
 					return this.getElWidth() - this.getContainerWidth();
 				},
 				// Attach the hover event
-				attachHover: function() {
+				attachEvent: function() {
 					this.getHoverTarget().hover(function() {
 						applyActiveStyles(scrollText.el, scrollText.calculateTextIndent());
 						}, function() {
@@ -63,7 +63,7 @@
 				// Roll Out!
 				init: function() {
 					if(this.getElWidth() > this.getContainerWidth()) {
-						this.attachHover();
+						this.attachEvent();
 					}
 				}
 			}
