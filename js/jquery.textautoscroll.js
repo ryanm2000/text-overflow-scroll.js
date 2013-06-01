@@ -4,24 +4,24 @@
 
 		// Combine global settings and user settings
 		var settings = $.extend({
-			duration: '3000',					// Duration of animation in milliseconds
+			speed: 'medium',					// Speed in which you want the animation to appear
 			hoverElement: 'self',			// Element to hook the hover event to
-			easing: 'ease-in-out',		// Easing function to use
+			easing: 'ease-out',				// Easing function to use
 			complete: null						// Placeholder for callback
 		}, options);
 
 		// Apply styles to animate and text indent the text
-		var applyActiveStyles = function(elToChange, textIndent) {
+		var applyActiveStyles = function(elToChange, textIndent, duration) {
 			elToChange.css({
-				'transition': 'text-indent ' + settings.duration + 'ms ' + settings.easing,
+				'transition': 'text-indent ' + duration + 'ms ' + settings.easing,
 				'text-indent': - textIndent + 'px'
 			});
 		}
 
 		// Reset/remove previously added styles
-		var removeActiveStyles = function(elToChange) {
+		var removeActiveStyles = function(elToChange, duration) {
 			elToChange.css({
-				'transition': settings.duration /2  + 'ms',
+				'transition': duration /3  + 'ms',
 				'text-indent': '0'
 			})
 		}
@@ -52,12 +52,21 @@
 				calculateTextIndent : function() {
 					return this.getElWidth() - this.getContainerWidth();
 				},
+				calculateDuration: function() {
+					if(settings.speed == 'fast') {
+						return this.el.text().length * 42;
+					} else if (settings.speed == 'slow') {
+						return this.el.text().length * 105;
+					} else {
+						return this.el.text().length * 68;
+					}
+				},
 				// Attach the hover event
 				attachEvent: function() {
 					this.getHoverTarget().hover(function() {
-						applyActiveStyles(scrollText.el, scrollText.calculateTextIndent());
+						applyActiveStyles(scrollText.el, scrollText.calculateTextIndent(), scrollText.calculateDuration());
 						}, function() {
-							removeActiveStyles(scrollText.el);
+							removeActiveStyles(scrollText.el, scrollText.calculateDuration());
 						});
 				},
 				// Roll Out!
@@ -68,6 +77,7 @@
 				}
 			}
 			scrollText.init();
+			window.scrollText = scrollText;
 		})
 
 	}
