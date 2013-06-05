@@ -64,7 +64,7 @@
 				},
 				attachClipEffect: function() {
 					if(settings.clipTechnique == 'ellipsis') {
-
+						this.el.append('<span class="autoscroll-clip-ellipsis">...</span>')
 					} else if(settings.clipTechnique == 'fade') {
 						this.el.addClass('autoscroll-clip-fade');
 					}

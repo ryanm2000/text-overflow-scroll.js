@@ -4,6 +4,7 @@
 <style type="text/css">
 body {
 		font-family: sans-serif;
+		background:#e9e9e9;
 }
 /* Required Styles */
 .autoscroll {
@@ -12,30 +13,40 @@ body {
 	text-align: left;
 	white-space: nowrap;
 }
-.autoscroll-clip-fade:before,
-.autoscroll-clip-fade:after {
-	content: " ";
-	width:10px;
-	position: absolute;
-	opacity:.5;
-	top:0;
-	bottom:0;
-	-webkit-transition:opacity .25s ease-in-out, width .25s ease-in-out;
-}
-.autoscroll-clip-fade:before {
-	background-image:-webkit-linear-gradient(left, #fff, rgba(255,255,255,0));
-	left:0;
-	opacity:0;
-	width:0;
-}
-.autoscroll-clip-fade:after {
-	background-image:-webkit-linear-gradient(left, rgba(255,255,255,0), #fff);
-	right:0;
-}
-.autoscroll-clip-fade.active:before {
-	opacity:1;
-	width:10px;
-}
+	.autoscroll-clip-fade:before,
+	.autoscroll-clip-fade:after {
+		content: " ";
+		width:10px;
+		position: absolute;
+		opacity:.5;
+		top:0;
+		bottom:0;
+		-webkit-transition:opacity .25s ease-in-out, width .25s ease-in-out;
+	}
+	.autoscroll-clip-fade:before {
+		background-image:-webkit-linear-gradient(left, #fff, rgba(255,255,255,0));
+		left:0;
+		opacity:0;
+		width:0;
+	}
+	.autoscroll-clip-fade:after {
+		background-image:-webkit-linear-gradient(left, rgba(255,255,255,0), #fff);
+		right:0;
+	}
+	.autoscroll-clip-fade.active:before {
+		opacity:1;
+		width:10px;
+	}
+
+	.autoscroll-clip-ellipsis {
+		position: absolute;
+		right: 0;
+		top:0;
+		//color:red;
+		background: #fff;
+		display:block;
+		float:right;
+	}
 
 
 /* Demo Styles */
@@ -44,11 +55,11 @@ body {
 	max-width: 730px;
 }
 	.eg1 .container {
-		background: #e9e9e9;
-		border: solid 1px #fff;
+		background: #fff;
+		border: solid 1px #e9e9e9;
 		float: left;
 		margin: 10px;
-		outline: solid 3px #e9e9e9;
+		outline: solid 3px #fff;
 		overflow: hidden;
 		overflow: hidden;
 		padding: 15px;
@@ -65,44 +76,34 @@ body {
 </head>
 <body>
 <div class="eg1">
-	<h1>Heading</h1>
+	<h1></h1>
 	<div class="container">
-		<img src="http://placekitten.com/g/130/90">
+		<img src="http://.placekitten.com/g/130/90">
 		<span class="autoscroll">Lorem ipsumasdfd dsa fds dolor sit amet</span>
 		<small>$31.95</small>
 	</div>
 	<div class="container">
-		<img src="http://placekitten.com/g/130/90">
+		<img src="http://.placekitten.com/g/130/90">
 		<span class="autoscroll">Lorem ipsumasdfd dsa fds dolor sit amet</span>
 		<small>$31.95</small>
 	</div>
 	<div class="container">
-		<img src="http://placekitten.com/g/130/90">
-		<span class="autoscroll">Text Auto Scroll - what a cool plugin</span>
-		<small>$31.95</small>
-	</div>
-	<div class="container">
-		<img src="http://placekitten.com/g/130/90">
+		<img src="http://.placekitten.com/g/130/90">
 		<span class="autoscroll">Lorem ipsumasdfd dsa fds dolor sit amet</span>
 		<small>$31.95</small>
 	</div>
 	<div class="container">
-		<img src="http://placekitten.com/g/130/90">
-		<span class="autoscroll">A jQuery plugin that grabs a piece of single-line text, and on hover will scroll it so you can read it all. Pretty simple.</span>
-		<small>$31.95</small>
-	</div>
-	<div class="container">
-		<img src="http://placekitten.com/g/130/90">
+		<img src="http://.placekitten.com/g/130/90">
 		<span class="autoscroll">Include a reference to the plugin file, then simple call:</span>
 		<small>$31.95</small>
 	</div>
 	<div class="container">
-		<img src="http://placekitten.com/g/130/90">
+		<img src="http://.placekitten.com/g/130/90">
 		<span class="autoscroll">Lorem ipsumasdfd dsa fds dolor sit amet Lorem ipsuma sdfd dsa fds dolor sit amet</span>
 		<small>$31.95</small>
 	</div>
 	<div class="container">
-		<img src="http://placekitten.com/g/130/90">
+		<img src="http://.placekitten.com/g/130/90">
 		<span class="autoscroll">Lorem ipsumasdfd dsa fds dolor sit amet Lorem ipsumasdfd dsa fds dolor sit amet Lorem ipsumasdfd dsa fds dolor sit amet </span>
 		<small>$31.95</small>
 	</div>
@@ -115,7 +116,7 @@ body {
 
 <script>
 	$(function() {
-		$('.autoscroll').scrollingText({speed: 'normal', hoverElement: 'parent'});
+		$('.autoscroll').scrollingText({speed: 'normal', hoverElement: 'parent', clipTechnique: 'ellipsis'});
 	})
 </script>
 </body>
