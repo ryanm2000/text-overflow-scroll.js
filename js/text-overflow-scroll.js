@@ -3,33 +3,6 @@
 
   var timer;
 
-  var scrollStart = function(elToChange, textIndent, duration, easing) {
-    // Set a timer for the same duration as the animation and fire scrollComplete
-    timer = window.setTimeout(function() {
-      scrollComplete(elToChange)
-    }, duration);
-    // Set indentation styles
-    elToChange.css({
-      'transition': 'text-indent ' + duration + 'ms ' + easing,
-      'text-indent': (-textIndent) + 'px'
-    }).addClass('is-scrolling');
-  };
-
-  var scrollCancel = function(elToChange, duration) {
-    // Clear the timer
-    window.clearTimeout(timer);
-    // Reset styles
-    elToChange.css({
-      'transition': (duration /3)  + 'ms',
-      'text-indent': '0'
-    }).removeClass('is-scrolling').removeClass('has-scrolled');
-  };
-
-  var scrollComplete = function(elToChange) {
-    // Set some different classes to differentiate the styling
-    elToChange.removeClass('is-scrolling').addClass('has-scrolled')
-  }
-
   var ScrollText = function(el, settings) {
     this.el = el;
     this.container = el.parent();
@@ -38,6 +11,35 @@
   };
 
   ScrollText.prototype = $.extend({
+
+    scrollStart: function(elToChange, textIndent, duration, easing) {
+      var that = this;
+      // Set a timer for the same duration as the animation and fire scrollComplete
+      timer = window.setTimeout(function() {
+        that.scrollComplete(elToChange)
+      }, duration);
+      // Set indentation styles
+      elToChange.css({
+        'transition': 'text-indent ' + duration + 'ms ' + easing,
+        'text-indent': (-textIndent) + 'px'
+      }).addClass('is-scrolling');
+    },
+
+    scrollCancel: function(elToChange, duration) {
+      // Clear the timer
+      window.clearTimeout(timer);
+      // Reset styles
+      elToChange.css({
+        'transition': (duration /3)  + 'ms',
+        'text-indent': '0'
+      }).removeClass('is-scrolling').removeClass('has-scrolled');
+    },
+
+    scrollComplete: function(elToChange) {
+      // Set some different classes to differentiate the styling
+      elToChange.removeClass('is-scrolling').addClass('has-scrolled')
+    },
+
     getWidth: function() {
       var calcWidth = this.el.css('position','absolute').width();
       this.el.css('position','relative');
@@ -90,9 +92,9 @@
       var that = this,
           duration = that.calculateDuration();
       this.getHoverTarget().hover(function() {
-        scrollStart(that.el, that.calculateTextIndent(), duration, that.settings.easing);
+        that.scrollStart(that.el, that.calculateTextIndent(), duration, that.settings.easing);
       }, function(completeTimeout) {
-        scrollCancel(that.el, duration);
+        that.scrollCancel(that.el, duration);
         window.clearTimeout(completeTimeout)
       });
     },
@@ -104,9 +106,7 @@
         this.attachEvent();
       }
     }
-
   });
-
 
   $.fn.scrollingText = function(options) {
 
@@ -128,6 +128,5 @@
 
       //window.scrollText = scrollText;
     })
-
   }
 }(jQuery));
