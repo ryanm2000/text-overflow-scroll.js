@@ -22,7 +22,7 @@
 				position: absolute;
 				height: 20px;
 				top: 0;
-				transition: width .5;
+				transition: width .5s;
 			}
 			.overflow-scroll-clip-fade-start {
 				background-image: -webkit-linear-gradient(left, #fff, rgba(255,255,255,0));
@@ -35,8 +35,12 @@
 				width:0;
 			}
 			.overflow-scroll-clip-fade-end,
-			.is-scrolling .overflow-scroll-clip-fade-start {
+			.is-scrolling .overflow-scroll-clip-fade-start,
+			.has-scrolled .overflow-scroll-clip-fade-start {
 				width: 10px;
+			}
+			.has-scrolled .overflow-scroll-clip-fade-end {
+				width: 0px;
 			}
 
 			.overflow-scroll-clip-ellipsis {

@@ -1,27 +1,34 @@
-function isDone() {
-  console.log('Add a class of complete to element')
-}
+
 (function($){
 
   var timer;
 
-  // Apply styles to animate and text indent the text
-  var applyActiveStyles = function(elToChange, textIndent, duration, easing) {
-    timer = window.setTimeout(isDone, duration);
+  var scrollStart = function(elToChange, textIndent, duration, easing) {
+    // Set a timer for the same duration as the animation and fire scrollComplete
+    timer = window.setTimeout(function() {
+      scrollComplete(elToChange)
+    }, duration);
+    // Set indentation styles
     elToChange.css({
       'transition': 'text-indent ' + duration + 'ms ' + easing,
       'text-indent': (-textIndent) + 'px'
     }).addClass('is-scrolling');
   };
 
-  // Reset/remove previously added styles
-  var removeActiveStyles = function(elToChange, duration) {
-    window.clearTimeout(isDone);
+  var scrollCancel = function(elToChange, duration) {
+    // Clear the timer
+    window.clearTimeout(timer);
+    // Reset styles
     elToChange.css({
       'transition': (duration /3)  + 'ms',
       'text-indent': '0'
-    }).removeClass('is-scrolling');
+    }).removeClass('is-scrolling').removeClass('has-scrolled');
   };
+
+  var scrollComplete = function(elToChange) {
+    // Set some different classes to differentiate the styling
+    elToChange.removeClass('is-scrolling').addClass('has-scrolled')
+  }
 
   var ScrollText = function(el, settings) {
     this.el = el;
@@ -81,9 +88,9 @@ function isDone() {
       var that = this,
           duration = that.calculateDuration();
       this.getHoverTarget().hover(function() {
-        applyActiveStyles(that.el, that.calculateTextIndent(), duration, that.settings.easing);
+        scrollStart(that.el, that.calculateTextIndent(), duration, that.settings.easing);
       }, function(completeTimeout) {
-        removeActiveStyles(that.el, duration);
+        scrollCancel(that.el, duration);
         window.clearTimeout(completeTimeout)
       });
     },
