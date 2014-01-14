@@ -1,6 +1,13 @@
+function isDone() {
+  console.log('Add a class of complete to element')
+}
 (function($){
+
+  var timer;
+
   // Apply styles to animate and text indent the text
   var applyActiveStyles = function(elToChange, textIndent, duration, easing) {
+    timer = window.setTimeout(isDone, duration);
     elToChange.css({
       'transition': 'text-indent ' + duration + 'ms ' + easing,
       'text-indent': (-textIndent) + 'px'
@@ -9,6 +16,7 @@
 
   // Reset/remove previously added styles
   var removeActiveStyles = function(elToChange, duration) {
+    window.clearTimeout(isDone);
     elToChange.css({
       'transition': (duration /3)  + 'ms',
       'text-indent': '0'
@@ -70,12 +78,14 @@
 
     // Attach the hover event
     attachEvent: function() {
-      var that = this;
+      var that = this,
+          duration = that.calculateDuration();
       this.getHoverTarget().hover(function() {
-        applyActiveStyles(that.el, that.calculateTextIndent(), that.calculateDuration(), that.settings.easing);
-        }, function() {
-          removeActiveStyles(that.el, that.calculateDuration());
-        });
+        applyActiveStyles(that.el, that.calculateTextIndent(), duration, that.settings.easing);
+      }, function(completeTimeout) {
+        removeActiveStyles(that.el, duration);
+        window.clearTimeout(completeTimeout)
+      });
     },
 
     // Roll Out!

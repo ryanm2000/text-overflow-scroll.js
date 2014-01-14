@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"time",
+				"timeoutID"
+			],
+			[
 				"panel-messa",
 				"panel-message-success"
 			],
@@ -51,6 +55,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "js/text-overflow-scroll.js",
+			"settings":
+			{
+				"buffer_size": 3785,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "demo.html",
+			"settings":
+			{
+				"buffer_size": 3242,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -473,6 +493,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"applyActiveStyles",
+			"active",
+			".placekitten",
+			"180deg",
+			"0,0,0,1",
+			"top",
+			"255,255,255",
+			"startColor",
 			"border-box",
 			".box-shadow(",
 			"-moz-box-shadow",
@@ -592,15 +620,7 @@
 			"hasThumbPagination",
 			"photo",
 			"photos",
-			"width",
-			"thumbnail-window",
-			"thumbnails",
-			"hover",
-			"defaultOptions",
-			"thumbnails",
-			"thumbnail",
-			"options",
-			"Gallery"
+			"width"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -635,8 +655,75 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "js/text-overflow-scroll.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3785,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2440,
+								2457
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/InactivePanes_/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1281.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "demo.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3242,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								338,
+								338
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1212,7 +1299,7 @@
 		[
 			[
 				"",
-				"C:\\src\\Csn.Styleguide\\Csn.Styleguide.sublime-project"
+				"C:\\src\\Csn.Carsales.Web\\Csn.Carsales.Web.sublime-project"
 			],
 			[
 				"web",
