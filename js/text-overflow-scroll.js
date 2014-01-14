@@ -4,7 +4,7 @@
     elToChange.css({
       'transition': 'text-indent ' + duration + 'ms ' + easing,
       'text-indent': (-textIndent) + 'px'
-    }).addClass('active');
+    }).addClass('is-scrolling');
   };
 
   // Reset/remove previously added styles
@@ -12,7 +12,7 @@
     elToChange.css({
       'transition': (duration /3)  + 'ms',
       'text-indent': '0'
-    }).removeClass('active');
+    }).removeClass('is-scrolling');
   };
 
   var ScrollText = function(el, settings) {
@@ -63,8 +63,8 @@
       if(this.settings.clipTechnique == 'ellipsis') {
         this.el.append('<span class="'+this.prefix+'-clip-ellipsis">...</span>')
       } else if(this.settings.clipTechnique == 'fade') {
-        this.el.addClass(this.prefix+'-clip-fade')
-          .append('<span class="'+this.prefix+'-fade-end">');
+        this.el.append('<span class="'+this.prefix+'-clip-fade-end">','<span class="'+this.prefix+'-clip-fade-start">');
+        // this.el.addClass(this.prefix+'-clip-fade');
       }
     },
 
