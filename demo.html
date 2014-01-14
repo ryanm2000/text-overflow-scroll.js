@@ -44,8 +44,9 @@
 			}
 
 			.overflow-scroll-clip-ellipsis {
-				background: #fff;
-				float:right;
+				padding-right: 22px;
+			}
+			.overflow-scroll-clip-ellipsis-end {
 				display:block;
 				position: absolute;
 				right: 0;
@@ -124,7 +125,7 @@
 		$('.overflow-scroll').scrollingText({
 			speed: 'normal',
 			hoverElement: 'parent',
-			clipTechnique: 'fade'
+			clipTechnique: 'ellipsis'
 		});
 	})
 </script>

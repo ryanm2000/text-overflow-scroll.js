@@ -76,9 +76,11 @@
 
     attachClipEffect: function() {
       if(this.settings.clipTechnique == 'ellipsis') {
-        this.el.append('<span class="'+this.prefix+'-clip-ellipsis">...</span>')
+        this.el.addClass(this.prefix+'-clip-ellipsis')
+          .append('<span class="'+this.prefix+'-clip-ellipsis-end">...</span>')
       } else if(this.settings.clipTechnique == 'fade') {
-        this.el.append('<span class="'+this.prefix+'-clip-fade-end">','<span class="'+this.prefix+'-clip-fade-start">');
+        this.el.addClass(this.prefix+'-clip-fade')
+          .append('<span class="'+this.prefix+'-clip-fade-end">','<span class="'+this.prefix+'-clip-fade-start">');
         // this.el.addClass(this.prefix+'-clip-fade');
       }
     },
@@ -114,7 +116,7 @@
       speed: 'medium',          // Speed in which you want the animation to run
       hoverElement: 'self',     // Element to hook the hover event to
       easing: 'ease-out',       // Easing function to use
-      clipTechnique: 'fade',    // Technique to clip the end of the text
+      clipTechnique: 'ellipsis',// Technique to clip the end of the text
       fadeColor: '255,255,255', // In R,G,B format. Only used if clipTechnique is fade
       complete: null            // Placeholder for callback
     }, options);
