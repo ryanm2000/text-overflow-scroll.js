@@ -59,7 +59,7 @@
 			"file": "js/text-overflow-scroll.js",
 			"settings":
 			{
-				"buffer_size": 3785,
+				"buffer_size": 4228,
 				"line_ending": "Windows"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "demo.html",
 			"settings":
 			{
-				"buffer_size": 3242,
+				"buffer_size": 3430,
 				"line_ending": "Windows"
 			}
 		}
@@ -493,6 +493,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"scrollStart",
+			"scrollText",
+			"-clip-ellipsis",
+			"overflow-scroll-clip-ellipsis",
+			"removeActiveStyles",
+			"applyActiveStyles",
+			"isDone",
+			"removeActiveStyles",
+			"duration",
 			"applyActiveStyles",
 			"active",
 			".placekitten",
@@ -611,16 +620,7 @@
 			"53px",
 			"53",
 			"li ",
-			"elem",
-			"click",
-			"thumbnails",
-			"click",
-			"thumbnails",
-			"margin",
-			"hasThumbPagination",
-			"photo",
-			"photos",
-			"width"
+			"elem"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -628,6 +628,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"scrollCancel",
+			"scrollStart",
+			"scrollComplete",
 			"8px",
 			"arrow-width",
 			"media-sidebar",
@@ -664,29 +667,29 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3785,
+						"buffer_size": 4228,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2440,
-								2457
+								326,
+								326
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/InactivePanes_/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
 							"incomplete_sync": null,
 							"remote_loading": false,
+							"spell_check": true,
 							"synced": false,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1281.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -698,15 +701,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3242,
+						"buffer_size": 3430,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								338,
-								338
+								1110,
+								1110
 							]
 						],
 						"settings":
@@ -718,7 +721,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 357.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1298,11 +1301,15 @@
 		"selected_items":
 		[
 			[
-				"",
+				"web",
 				"C:\\src\\Csn.Carsales.Web\\Csn.Carsales.Web.sublime-project"
 			],
 			[
-				"web",
+				"carloan",
+				"C:\\tempcl\\carloan.com.au\\carloan.web\\carloan.sublime-project"
+			],
+			[
+				"",
 				"C:\\src\\Csn.Carsales.Web\\Csn.Carsales.Web.sublime-project"
 			],
 			[
@@ -1320,10 +1327,6 @@
 			[
 				"carsales",
 				"C:\\src\\Csn.Carsales.Mobi\\Csn.Carsales.Mobi.sublime-project"
-			],
-			[
-				"carloan",
-				"C:\\tempcl\\carloan.com.au\\carloan.com.au\\carloan.sublime-workspace"
 			],
 			[
 				"carloa",
