@@ -83,6 +83,57 @@
       }
     },
 
+    animations: {
+      'css': {
+        in: function() {
+          console.log('css-1')
+        },
+        out: function() {
+          console.log('css-2')
+        }
+      },
+      'js': {
+        in: function() {
+          console.log('js-1')
+        },
+        out: function() {
+          console.log('js-2')
+        }
+      }
+    },
+
+    modernAnimation: function(duration, textIndent) {
+      var that = this;
+      that.scrollStart(duration, textIndent);
+    },
+    modernAnimationReset: function(duration, textIndent) {
+      that.scrollCancel(duration);
+      window.clearTimeout(completeTimeout)
+    },
+    legacyAnimation: function(duration, textIndent) {
+      var that = this;
+      that.el.animate({ textIndent: - textIndent }, duration);
+    },
+    legacyAnimationReset: function(duration) {
+      var that = this;
+      that.el.animate({ textIndent: 0 }, duration);
+    },
+
+    animationMethod: function() {
+      var that = this;
+      if(Modernizr.cssanimations) {
+        return {
+          'mouseenter': function() {that.animations.css.in()},
+          'mouseleave': function() {that.animations.css.out()}
+        }
+      } else {
+        return {
+          'mouseenter': function() {that.animations.js.in()},
+          'mouseleave': function() {that.animations.js.out()}
+        }
+      }
+    },
+
     attachClipEffect: function() {
       if(this.settings.clipTechnique == 'ellipsis') {
         this.el.addClass(this.prefix+'-clip-ellipsis')
@@ -101,36 +152,24 @@
           hoverTarget = that.getHoverTarget(),
           textIndent = that.calculateTextIndent();
 
+      var animate = that.animationMethod();
+
       hoverTarget.hover(function() {
+        animate['mouseenter']();
+      }, function() {
+        animate['mouseleave']();
+      });
+
+      /*hoverTarget.hover(function() {
         that.legacyAnimation(duration, textIndent)
         // that.modernAnimation(duration, textIndent);
       }, function() {
         that.legacyAnimationReset(duration, textIndent);
         // that.modernAnimationReset(duration, textIndent);
-      });
-      /*, function(completeTimeout) {
-        that.scrollCancel(duration);
-        window.clearTimeout(completeTimeout)
       });*/
     },
 
-    modernAnimation: function(duration, textIndent) {
-      var that = this;
-      that.scrollStart(duration, textIndent);
-    },
-    modernAnimationReset: function(duration, textIndent) {
-      var that = this;
-      that.scrollStart(duration, textIndent);
-    },
 
-    legacyAnimation: function(duration, textIndent) {
-      var that = this;
-      that.el.animate({ textIndent: - textIndent }, duration);
-    },
-    legacyAnimationReset: function(duration) {
-      var that = this;
-      that.el.animate({ textIndent: 0 }, duration);
-    },
 
     // Roll Out!
     init: function() {
