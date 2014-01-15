@@ -46,6 +46,10 @@
       return calcWidth;
     },
 
+    hasMargin: function() {
+      return parseInt(this.el.css('marginLeft').replace('px','')) || parseInt(this.el.css('marginRight').replace('px',''));
+    },
+
     // Get the width of the direct parent of the scrolling element
     getContainerWidth: function() {
       return this.container.width()
