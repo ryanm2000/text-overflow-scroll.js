@@ -120,6 +120,7 @@
     },
 
     animationMethod: function() {
+      // Logic to determine whether to use CSS animations or the JS fallbacks
       var that = this;
       if(Modernizr.cssanimations) {
         return {
@@ -141,32 +142,23 @@
       } else if(this.settings.clipTechnique == 'fade') {
         this.el.addClass(this.prefix+'-clip-fade')
           .append('<span class="'+this.prefix+'-clip-fade-end">','<span class="'+this.prefix+'-clip-fade-start">');
-        // this.el.addClass(this.prefix+'-clip-fade');
       }
     },
 
     // Attach the hover event
     attachEvent: function() {
+      // Attach the mouse on and out events
       var that = this,
           duration = that.calculateDuration(),
           hoverTarget = that.getHoverTarget(),
-          textIndent = that.calculateTextIndent();
-
-      var animate = that.animationMethod();
+          textIndent = that.calculateTextIndent(),
+          animate = that.animationMethod();
 
       hoverTarget.hover(function() {
         animate['mouseenter']();
       }, function() {
         animate['mouseleave']();
       });
-
-      /*hoverTarget.hover(function() {
-        that.legacyAnimation(duration, textIndent)
-        // that.modernAnimation(duration, textIndent);
-      }, function() {
-        that.legacyAnimationReset(duration, textIndent);
-        // that.modernAnimationReset(duration, textIndent);
-      });*/
     },
 
 
