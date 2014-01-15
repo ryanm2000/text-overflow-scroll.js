@@ -12,32 +12,35 @@
 
   ScrollText.prototype = $.extend({
 
-    scrollStart: function(elToChange, textIndent, duration, easing) {
-      var that = this;
+    scrollStart: function(duration, textIndent) {
+      var that = this,
+          easing = that.settings.easing;
       // Set a timer for the same duration as the animation and fire scrollComplete
       timer = window.setTimeout(function() {
-        that.scrollComplete(elToChange)
+        that.scrollComplete();
       }, duration);
       // Set indentation styles
-      elToChange.css({
+      that.el.css({
         'transition': 'text-indent ' + duration + 'ms ' + easing,
         'text-indent': (-textIndent) + 'px'
       }).addClass('is-scrolling');
     },
 
-    scrollCancel: function(elToChange, duration) {
+    scrollCancel: function(duration) {
+      var that  = this;
       // Clear the timer
       window.clearTimeout(timer);
       // Reset styles
-      elToChange.css({
+      that.el.css({
         'transition': (duration /3)  + 'ms',
         'text-indent': '0'
       }).removeClass('is-scrolling').removeClass('has-scrolled');
     },
 
-    scrollComplete: function(elToChange) {
+    scrollComplete: function() {
+      var that = this;
       // Set some different classes to differentiate the styling
-      elToChange.removeClass('is-scrolling').addClass('has-scrolled')
+      that.el.removeClass('is-scrolling').addClass('has-scrolled')
     },
 
     getWidth: function() {
@@ -94,13 +97,39 @@
     // Attach the hover event
     attachEvent: function() {
       var that = this,
-          duration = that.calculateDuration();
-      this.getHoverTarget().hover(function() {
-        that.scrollStart(that.el, that.calculateTextIndent(), duration, that.settings.easing);
-      }, function(completeTimeout) {
-        that.scrollCancel(that.el, duration);
-        window.clearTimeout(completeTimeout)
+          duration = that.calculateDuration(),
+          hoverTarget = that.getHoverTarget(),
+          textIndent = that.calculateTextIndent();
+
+      hoverTarget.hover(function() {
+        that.legacyAnimation(duration, textIndent)
+        // that.modernAnimation(duration, textIndent);
+      }, function() {
+        that.legacyAnimationReset(duration, textIndent);
+        // that.modernAnimationReset(duration, textIndent);
       });
+      /*, function(completeTimeout) {
+        that.scrollCancel(duration);
+        window.clearTimeout(completeTimeout)
+      });*/
+    },
+
+    modernAnimation: function(duration, textIndent) {
+      var that = this;
+      that.scrollStart(duration, textIndent);
+    },
+    modernAnimationReset: function(duration, textIndent) {
+      var that = this;
+      that.scrollStart(duration, textIndent);
+    },
+
+    legacyAnimation: function(duration, textIndent) {
+      var that = this;
+      that.el.animate({ textIndent: - textIndent }, duration);
+    },
+    legacyAnimationReset: function(duration) {
+      var that = this;
+      that.el.animate({ textIndent: 0 }, duration);
     },
 
     // Roll Out!

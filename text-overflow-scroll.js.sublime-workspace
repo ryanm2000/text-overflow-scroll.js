@@ -59,7 +59,7 @@
 			"file": "js/text-overflow-scroll.js",
 			"settings":
 			{
-				"buffer_size": 4228,
+				"buffer_size": 4482,
 				"line_ending": "Windows"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "demo.html",
 			"settings":
 			{
-				"buffer_size": 3430,
+				"buffer_size": 4520,
 				"line_ending": "Windows"
 			}
 		}
@@ -493,6 +493,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"try",
+			"hasMargin",
+			"el",
+			"hasmar",
+			"hasmargin",
+			"width",
+			"price",
+			"$31.95",
+			"width",
+			"place",
 			"scrollStart",
 			"scrollText",
 			"-clip-ellipsis",
@@ -610,17 +620,7 @@
 			"stock-image-warning",
 			"media-gallery-footer",
 			"modal",
-			"5px",
-			"7",
-			"col-7",
-			"col7",
-			"5px",
-			"li {",
-			".thumbnail-window",
-			"53px",
-			"53",
-			"li ",
-			"elem"
+			"5px"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -667,19 +667,20 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4228,
+						"buffer_size": 4482,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								326,
-								326
+								3421,
+								3421
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/InactivePanes_/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"spell_check": true,
@@ -689,7 +690,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1662.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -701,15 +702,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3430,
+						"buffer_size": 4520,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1110,
-								1110
+								2760,
+								2676
 							]
 						],
 						"settings":
@@ -721,7 +722,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 357.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -780,6 +781,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"demo",
+				"demo.html"
+			],
 			[
 				"mixins",
 				"src\\less\\base\\_mixins.less"
@@ -1287,10 +1292,6 @@
 			[
 				"specialmodel",
 				"Areas\\Special\\Models\\SpecialOfferListingViewModel.cs"
-			],
-			[
-				"specialofferlist",
-				"Areas\\Campaigns\\Views\\Easy\\SpecialOfferList.cshtml"
 			]
 		],
 		"width": 0.0
