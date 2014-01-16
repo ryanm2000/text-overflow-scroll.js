@@ -181,7 +181,6 @@
       hoverElement: 'self',     // Element to hook the hover event to
       easing: 'ease-out',       // Easing function to use
       clipTechnique: 'ellipsis',// Technique to clip the end of the text
-      fadeColor: '255,255,255', // In R,G,B format. Only used if clipTechnique is fade
       complete: null            // Placeholder for callback
     }, options);
 
