@@ -101,29 +101,12 @@
       },
       'js': {
         in: function() {
-          this.el.stop().animate({ textIndent: - this.textIndent }, this.duration, this.settings.easing, this.scrollCancel);
+          this.el.stop().animate({ textIndent: - this.textIndent }, this.duration, 'linear', this.scrollCancel);
         },
         out: function() {
-          this.el.stop().animate({ textIndent: 0 }, this.duration/3, this.settings.easing);
+          this.el.stop().animate({ textIndent: 0 }, this.duration/3);
         }
       }
-    },
-
-    modernAnimation: function(duration, textIndent) {
-      var that = this;
-      that.scrollStart();
-    },
-    modernAnimationReset: function(duration, textIndent) {
-      that.scrollCancel(duration);
-      window.clearTimeout(completeTimeout)
-    },
-    legacyAnimation: function(duration, textIndent) {
-      var that = this;
-      that.el.animate({ textIndent: - textIndent }, duration);
-    },
-    legacyAnimationReset: function(duration) {
-      var that = this;
-      that.el.animate({ textIndent: 0 }, duration);
     },
 
     animationMethod: function(duration, textIndent) {
