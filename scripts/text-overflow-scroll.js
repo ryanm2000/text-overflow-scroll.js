@@ -4,17 +4,23 @@
   var timer;
 
   var ScrollText = function(el, settings) {
-    this.el = el;
-    this.container = el.parent();
-    this.settings = settings;
+    this.el = el;                   // Text element to be scrolled
+    this.container = el.parent();   // ..and its parent
+    this.settings = settings;       // User controlled settings
     this.prefix = settings.prefix;
+    this.duration;                  // How long the scroll should last
+    this.textIndent;                // How wide the text is
+    this.hoverTarget;               // When this element is hovered, scroll
+    this.timer;                     // Used to settimeout trigger a scrollComplete
   };
 
   ScrollText.prototype = $.extend({
 
-    scrollStart: function(duration, textIndent) {
+    scrollStart: function() {
       var that = this,
-          easing = that.settings.easing;
+          easing = that.settings.easing,
+          duration = that.duration,
+          textIndent = that.textIndent;
       // Set a timer for the same duration as the animation and fire scrollComplete
       timer = window.setTimeout(function() {
         that.scrollComplete();
@@ -26,13 +32,13 @@
       }).addClass('is-scrolling');
     },
 
-    scrollCancel: function(duration) {
+    scrollCancel: function() {
       var that  = this;
       // Clear the timer
       window.clearTimeout(timer);
       // Reset styles
       that.el.css({
-        'transition': (duration /3)  + 'ms',
+        'transition': (that.duration /3)  + 'ms',
         'text-indent': '0'
       }).removeClass('is-scrolling').removeClass('has-scrolled');
     },
@@ -74,37 +80,38 @@
 
     // Use text length to determine animation durations
     calculateDuration: function() {
-      if(this.settings.speed == 'fast') {
-        return this.el.text().length * 42;
-      } else if (this.settings.speed == 'slow') {
-        return this.el.text().length * 105;
+      var that = this;
+      if(that.settings.speed == 'fast') {
+        return that.el.text().length * 42;
+      } else if (that.settings.speed == 'slow') {
+        return that.el.text().length * 105;
       } else {
-        return this.el.text().length * 68;
+        return that.el.text().length * 68;
       }
     },
 
     animations: {
       'css': {
         in: function() {
-          console.log('css-1')
+          this.scrollStart();
         },
         out: function() {
-          console.log('css-2')
+          this.scrollCancel();
         }
       },
       'js': {
         in: function() {
-          console.log('js-1')
+          this.el.stop().animate({ textIndent: - this.textIndent }, this.duration, this.settings.easing, this.scrollCancel);
         },
         out: function() {
-          console.log('js-2')
+          this.el.stop().animate({ textIndent: 0 }, this.duration/3, this.settings.easing);
         }
       }
     },
 
     modernAnimation: function(duration, textIndent) {
       var that = this;
-      that.scrollStart(duration, textIndent);
+      that.scrollStart();
     },
     modernAnimationReset: function(duration, textIndent) {
       that.scrollCancel(duration);
@@ -119,18 +126,18 @@
       that.el.animate({ textIndent: 0 }, duration);
     },
 
-    animationMethod: function() {
+    animationMethod: function(duration, textIndent) {
       // Logic to determine whether to use CSS animations or the JS fallbacks
       var that = this;
-      if(Modernizr.cssanimations) {
+      if(typeof Modernizr != 'undefined' && Modernizr.cssanimations) { // If modernizr is present and cssanims are available
         return {
-          'mouseenter': function() {that.animations.css.in()},
-          'mouseleave': function() {that.animations.css.out()}
+          'mouseenter': function() {that.animations.css.in.call(that)}, // call passes in 'that' as the current 'this' context to give the animations access to the correct 'this' context
+          'mouseleave': function() {that.animations.css.out.call(that)}
         }
       } else {
         return {
-          'mouseenter': function() {that.animations.js.in()},
-          'mouseleave': function() {that.animations.js.out()}
+          'mouseenter': function() {that.animations.js.in.call(that)},
+          'mouseleave': function() {that.animations.js.out.call(that)}
         }
       }
     },
@@ -152,7 +159,7 @@
           duration = that.calculateDuration(),
           hoverTarget = that.getHoverTarget(),
           textIndent = that.calculateTextIndent(),
-          animate = that.animationMethod();
+          animate = that.animationMethod(duration, textIndent);
 
       hoverTarget.hover(function() {
         animate['mouseenter']();
@@ -166,6 +173,13 @@
     // Roll Out!
     init: function() {
       if(this.getWidth() > this.getContainerWidth()) {
+
+        // Determine some values to be used later
+        this.duration = this.calculateDuration(),
+        this.hoverTarget = this.getHoverTarget(),
+        this.textIndent = this.calculateTextIndent(),
+
+        // Make it work
         this.attachClipEffect();
         this.attachEvent();
       }

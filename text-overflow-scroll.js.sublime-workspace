@@ -59,7 +59,7 @@
 			"file": "js/text-overflow-scroll.js",
 			"settings":
 			{
-				"buffer_size": 4482,
+				"buffer_size": 5713,
 				"line_ending": "Windows"
 			}
 		},
@@ -75,9 +75,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"markdown",
+				"Markdown Preview: Python Markdown: Preview in Browser"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -97,10 +101,6 @@
 			[
 				"tasks",
 				"Tasks: Cancel"
-			],
-			[
-				"markdown",
-				"Markdown Preview: Python Markdown: Preview in Browser"
 			],
 			[
 				"html",
@@ -232,6 +232,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/ryan.margheriti/Projects/text-overflow-scroll.js/README.md",
 		"/C/src/Csn.Styleguide/src/less/skin/bikesales/variables-bikesales.less",
 		"/C/src/Csn.Styleguide/site/images/member-centre-icons.svg",
 		"/C/src/Csn.Styleguide/src/less/base/_mixins.less",
@@ -358,8 +359,7 @@
 		"/C/Users/ryan.margheriti/Desktop/sdfsd",
 		"/C/Users/ryan.margheriti/Desktop/Dear Mr Pinto,",
 		"/C/src/Csn.Carsales.Web/Content/css/themes/_details.less",
-		"/C/src/Csn.Carsales.Web/Content/css/patterns/_media.less",
-		"/C/src/Csn.Carsales.Web/Areas/Bnc/Views/ShowroomEnquiry/EnquiryForm.cshtml"
+		"/C/src/Csn.Carsales.Web/Content/css/patterns/_media.less"
 	],
 	"find":
 	{
@@ -493,6 +493,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fadeColor",
 			"try",
 			"hasMargin",
 			"el",
@@ -619,8 +620,7 @@
 			"canvas-window",
 			"stock-image-warning",
 			"media-gallery-footer",
-			"modal",
-			"5px"
+			"modal"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -658,7 +658,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -667,20 +667,19 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4482,
+						"buffer_size": 5713,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3421,
-								3421
+								5407,
+								5063
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/InactivePanes_/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"spell_check": true,
@@ -690,10 +689,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1662.0,
+						"translation.y": 3049.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -709,8 +708,8 @@
 						"selection":
 						[
 							[
-								2760,
-								2676
+								228,
+								228
 							]
 						],
 						"settings":
@@ -725,7 +724,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -781,6 +780,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"readme",
+				"README.md"
+			],
 			[
 				"demo",
 				"demo.html"
@@ -1288,10 +1291,6 @@
 			[
 				"specialless",
 				"Content\\css\\areas\\campaigns\\easy\\sections\\specialoffer.less"
-			],
-			[
-				"specialmodel",
-				"Areas\\Special\\Models\\SpecialOfferListingViewModel.cs"
 			]
 		],
 		"width": 0.0
@@ -1302,6 +1301,14 @@
 		"selected_items":
 		[
 			[
+				"style",
+				"C:\\src\\Csn.Styleguide\\Csn.Styleguide.sublime-project"
+			],
+			[
+				"",
+				"C:\\src\\Csn.Carsales.Mobi\\Csn.Carsales.Mobi.sublime-project"
+			],
+			[
 				"web",
 				"C:\\src\\Csn.Carsales.Web\\Csn.Carsales.Web.sublime-project"
 			],
@@ -1310,20 +1317,12 @@
 				"C:\\tempcl\\carloan.com.au\\carloan.web\\carloan.sublime-project"
 			],
 			[
-				"",
-				"C:\\src\\Csn.Carsales.Web\\Csn.Carsales.Web.sublime-project"
-			],
-			[
 				"we",
 				"C:\\src\\Csn.Carsales.Web\\Csn.Carsales.Web.sublime-project"
 			],
 			[
 				"reform",
 				"C:\\Users\\ryan.margheriti\\Projects\\Re-form\\reform.sublime-project"
-			],
-			[
-				"style",
-				"C:\\src\\Csn.Styleguide\\Csn.Styleguide.sublime-project"
 			],
 			[
 				"carsales",
@@ -1455,7 +1454,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 138.0,
+	"side_bar_width": 186.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
