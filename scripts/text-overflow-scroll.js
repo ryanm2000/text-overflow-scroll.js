@@ -34,12 +34,12 @@
 
     jsScrollStart: function() {
       var that = this;
-      that.el.stop().animate({ textIndent: - that.textIndent }, that.duration, 'linear', that.jsScrollCancel);
-      that.el.addClass('is-scrolling');
+      this.el.stop().animate({ textIndent: - this.textIndent }, this.duration, 'linear', this.jsScrollComplete);
+      this.el.addClass('is-scrolling');
     },
 
     jsScrollCancel: function() {
-      $(this).removeClass('is-scrolling');
+      this.el.stop().animate({ textIndent: 0 }).removeClass('is-scrolling');
     },
 
     jsScrollComplete: function() {
@@ -58,9 +58,8 @@
     },
 
     cssScrollComplete: function() {
-      var that = this;
       // Set some different classes to differentiate the styling
-      that.el.removeClass('is-scrolling').addClass('has-scrolled')
+      this.el.removeClass('is-scrolling').addClass('has-scrolled')
     },
 
     getWidth: function() {
@@ -152,11 +151,10 @@
     // Attach the hover event
     attachEvent: function() {
       // Attach the mouse on and out events
-      var that = this,
-          duration = that.calculateDuration(),
-          hoverTarget = that.getHoverTarget(),
-          textIndent = that.calculateTextIndent(),
-          animate = that.animationMethod(duration, textIndent);
+      var duration = this.calculateDuration(),
+          hoverTarget = this.getHoverTarget(),
+          textIndent = this.calculateTextIndent(),
+          animate = this.animationMethod(duration, textIndent);
 
       hoverTarget.hover(function() {
         animate['mouseenter']();

@@ -5,13 +5,21 @@ What is it?
 -----------------
 A jQuery plugin that grabs a single line of text, and on hover will scroll it so you can read it all. Pretty simple.
 
-Here is an example: https://dl.dropboxusercontent.com/u/24880508/TextAutoScroller/demo.html
+Uses CSS3 animations when they're available and falls back to javascript when they aren't.
+
+Here is an example: https://dl.dropboxusercontent.com/u/24880508/text-overflow-scroll/demo.html
 
 Dependencies
 -----------------
 - jQuery
 - Modernizr (Will work without it, but wont use CSS3 transitions)
 
+
+Road Map
+-----------------
+- ✔ IE8 Support
+- ☐ GH Pages example site
+- ☐ Touch device support
 
 How to use it
 -----------------
@@ -24,10 +32,10 @@ Include a reference to the plugin file, then simple call:
 
 Browser Support
 -----------------
-- Chrome 26+
+- Chrome
 - Firefox 16+
 - Opera 12.1+
-- Internet Explorer 8+ (In progress)
+- Internet Explorer 8+
 
 
 Options
