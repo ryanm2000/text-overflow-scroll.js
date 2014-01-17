@@ -11,19 +11,19 @@
     this.duration;                  // How long the scroll should last
     this.textIndent;                // How wide the text is
     this.hoverTarget;               // When this element is hovered, scroll
-    this.timer;                     // Used to settimeout trigger a scrollComplete
+    this.timer;                     // Used to settimeout trigger a cssScrollComplete
   };
 
   ScrollText.prototype = $.extend({
 
-    scrollStart: function() {
+    cssScrollStart: function() {
       var that = this,
           easing = that.settings.easing,
           duration = that.duration,
           textIndent = that.textIndent;
-      // Set a timer for the same duration as the animation and fire scrollComplete
+      // Set a timer for the same duration as the animation and fire cssScrollComplete
       timer = window.setTimeout(function() {
-        that.scrollComplete();
+        that.cssScrollComplete();
       }, duration);
       // Set indentation styles
       that.el.css({
@@ -32,7 +32,21 @@
       }).addClass('is-scrolling');
     },
 
-    scrollCancel: function() {
+    jsScrollStart: function() {
+      var that = this;
+      that.el.stop().animate({ textIndent: - that.textIndent }, that.duration, 'linear', that.jsScrollCancel);
+      that.el.addClass('is-scrolling');
+    },
+
+    jsScrollCancel: function() {
+      $(this).removeClass('is-scrolling');
+    },
+
+    jsScrollComplete: function() {
+      $(this).removeClass('is-scrolling').addClass('has-scrolled');
+    },
+
+    cssScrollCancel: function() {
       var that  = this;
       // Clear the timer
       window.clearTimeout(timer);
@@ -43,7 +57,7 @@
       }).removeClass('is-scrolling').removeClass('has-scrolled');
     },
 
-    scrollComplete: function() {
+    cssScrollComplete: function() {
       var that = this;
       // Set some different classes to differentiate the styling
       that.el.removeClass('is-scrolling').addClass('has-scrolled')
@@ -93,18 +107,18 @@
     animations: {
       'css': {
         in: function() {
-          this.scrollStart();
+          this.cssScrollStart();
         },
         out: function() {
-          this.scrollCancel();
+          this.cssScrollCancel();
         }
       },
       'js': {
         in: function() {
-          this.el.stop().animate({ textIndent: - this.textIndent }, this.duration, 'linear', this.scrollCancel);
+          this.jsScrollStart();
         },
         out: function() {
-          this.el.stop().animate({ textIndent: 0 }, this.duration/3);
+          this.jsScrollCancel();
         }
       }
     },
