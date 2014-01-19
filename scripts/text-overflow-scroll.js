@@ -16,6 +16,20 @@
 
   ScrollText.prototype = $.extend({
 
+    jsScrollStart: function() {
+      var that = this;
+      this.el.stop().animate({ textIndent: - this.textIndent }, this.duration, 'linear', this.jsScrollComplete);
+      this.el.addClass('is-scrolling');
+    },
+
+    jsScrollCancel: function() {
+      this.el.stop().animate({ textIndent: 0 }).removeClass('is-scrolling');
+    },
+
+    jsScrollComplete: function() {
+      $(this).removeClass('is-scrolling').addClass('has-scrolled');
+    },
+
     cssScrollStart: function() {
       var that = this,
           easing = that.settings.easing,
@@ -30,20 +44,6 @@
         'transition': 'text-indent ' + duration + 'ms ' + easing,
         'text-indent': (-textIndent) + 'px'
       }).addClass('is-scrolling');
-    },
-
-    jsScrollStart: function() {
-      var that = this;
-      this.el.stop().animate({ textIndent: - this.textIndent }, this.duration, 'linear', this.jsScrollComplete);
-      this.el.addClass('is-scrolling');
-    },
-
-    jsScrollCancel: function() {
-      this.el.stop().animate({ textIndent: 0 }).removeClass('is-scrolling');
-    },
-
-    jsScrollComplete: function() {
-      $(this).removeClass('is-scrolling').addClass('has-scrolled');
     },
 
     cssScrollCancel: function() {
@@ -66,10 +66,6 @@
       var calcWidth = this.el.css('position','absolute').width();
       this.el.css('position','relative');
       return calcWidth;
-    },
-
-    hasMargin: function() {
-      return parseInt(this.el.css('marginLeft').replace('px','')) || parseInt(this.el.css('marginRight').replace('px',''));
     },
 
     // Get the width of the direct parent of the scrolling element
@@ -156,11 +152,15 @@
           textIndent = this.calculateTextIndent(),
           animate = this.animationMethod(duration, textIndent);
 
-      hoverTarget.hover(function() {
-        animate['mouseenter']();
-      }, function() {
-        animate['mouseleave']();
-      });
+      if(typeof Modernizr != 'undefined' && !Modernizr.touch) { 
+        hoverTarget.hover(function() {
+          animate['mouseenter']();
+        }, function() {
+          animate['mouseleave']();
+        });
+      } else {
+
+      }
     },
 
 
