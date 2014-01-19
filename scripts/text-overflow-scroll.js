@@ -159,7 +159,7 @@
           animate['mouseleave']();
         });
       } else {
-
+        this.el.css('overflow','scroll').css('-webkit-overflow-scrolling','touch');
       }
     },
 
