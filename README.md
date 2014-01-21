@@ -20,6 +20,7 @@ Road Map
 - ✔ IE8 Support
 - ☐ GH Pages example site
 - ☐ Touch device support
+- ☐ Ellipsis clipping method
 
 How to use it
 -----------------
@@ -45,5 +46,4 @@ Options
  > speed: 'medium',            // Speed in which you want the animation to run
  > hoverElement: 'self',       // Element to hook the hover event to
  > easing: 'ease-out',         // Easing function to use
- > clipTechnique: 'ellipsis'   // Technique to clip the end of the text
 

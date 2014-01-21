@@ -135,13 +135,9 @@
     },
 
     attachClipEffect: function() {
-      if(this.settings.clipTechnique == 'ellipsis') {
-        this.el.addClass(this.prefix+'-clip-ellipsis')
-          .append('<span class="'+this.prefix+'-clip-ellipsis-end">...</span>')
-      } else if(this.settings.clipTechnique == 'fade') {
-        this.el.addClass(this.prefix+'-clip-fade')
-          .append('<span class="'+this.prefix+'-clip-fade-end">','<span class="'+this.prefix+'-clip-fade-start">');
-      }
+      this.el.addClass(this.prefix+'-clip-fade')
+        .append('<span class="'+this.prefix+'-clip-fade-end">','<span class="'+this.prefix+'-clip-fade-start">');
+
     },
 
     // Attach the hover event
@@ -152,7 +148,7 @@
           textIndent = this.calculateTextIndent(),
           animate = this.animationMethod(duration, textIndent);
 
-      if(typeof Modernizr != 'undefined' && !Modernizr.touch) { 
+      if(typeof Modernizr != 'undefined' && !Modernizr.touch) {
         hoverTarget.hover(function() {
           animate['mouseenter']();
         }, function() {
@@ -189,7 +185,6 @@
       speed: 'medium',          // Speed in which you want the animation to run
       hoverElement: 'self',     // Element to hook the hover event to
       easing: 'ease-out',       // Easing function to use
-      clipTechnique: 'ellipsis',// Technique to clip the end of the text
       complete: null            // Placeholder for callback
     }, options);
 
