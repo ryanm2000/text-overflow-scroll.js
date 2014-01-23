@@ -216,3 +216,4 @@ pip-log.txt
 *.sublime-workspace
 *.sublime-workspace
 text-overflow-scroll.js.sublime-workspace
+node_modules/*
