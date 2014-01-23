@@ -18,6 +18,7 @@ Dependencies
 Road Map
 -----------------
 - ✔ IE8 Support
+- ☐ Grunt build process to output demo for GH Pages
 - ☐ GH Pages example site
 - ☐ Touch device support
 - ☐ Ellipsis clipping method

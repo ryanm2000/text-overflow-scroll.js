@@ -14,7 +14,7 @@
     this.timer;                     // Used to settimeout trigger a cssScrollComplete
   };
 
-  ScrollText.prototype = $.extend({
+  ScrollText.prototype = {
 
     jsScrollStart: function() {
       var that = this;
@@ -62,7 +62,7 @@
       this.el.removeClass('is-scrolling').addClass('has-scrolled')
     },
 
-    getWidth: function() {
+    getScrollElWidth: function() {
       var calcWidth = this.el.css('position','absolute').width();
       this.el.css('position','relative');
       return calcWidth;
@@ -84,7 +84,7 @@
 
     // Calculate how far the text needs to indent
     calculateTextIndent : function() {
-      return this.getWidth() - this.getContainerWidth();
+      return this.getScrollElWidth() - this.getContainerWidth();
     },
 
     // Use text length to determine animation durations
@@ -163,7 +163,7 @@
 
     // Roll Out!
     init: function() {
-      if(this.getWidth() > this.getContainerWidth()) {
+      if(this.getScrollElWidth() > this.getContainerWidth()) {
 
         // Determine some values to be used later
         this.duration = this.calculateDuration(),
@@ -175,7 +175,7 @@
         this.attachEvent();
       }
     }
-  });
+  };
 
   $.fn.scrollingText = function(options) {
 
