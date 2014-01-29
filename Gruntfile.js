@@ -9,11 +9,20 @@ module.exports = function(grunt) {
         base: 'dist'
       },
       src: ['**']
+    },
+    sass: {
+      dist: {
+        files: {
+          'dist/styles/demo.css': 'src/styles/demo.scss'       // 'destination': 'source'
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
   grunt.registerTask('deploy', ['githubPages:target']);
+  grunt.registerTask('default', ['sass']);
 
 };
